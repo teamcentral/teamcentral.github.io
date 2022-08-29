@@ -8,7 +8,7 @@ permalink: /app/
 
 **Connectors**
 
-A connector is a data source that can push and receive data on the Central Integraton Platform.  We have a number of implementation options for connectors.
+A connector is a data source that can push and receive data on the Central Integraton Platform.  Think of a connector as the foundation of the house, and everything else sits on top of it.  We have a number of implementation options for connectors.
 
 1. Prebuilt connectors to many of the industry leading SaaS based products like Microsoft Dynamics and Salesforce
 2. Connectors to your own company owned REST API's, Relational Databases, or FTP locations
@@ -36,6 +36,10 @@ The API Gateway is the centerpiece of the Central Integration Platform.  All of 
 
 - Webhooks are endpoints that can receive an event from an external party.  Webhooks can be used to receive an event from a commercial SaaS system.  Webhooks are also a good way for external partners or vendors that you may be sharing data with to send data into Central to trigger a Data Hub or Workflow.
 - Data Providers give read/query access into all of your data sources from one spot.  Data Providers are great for aggregating data from multiple sources to provide functionality to custom applications, intranet pages, low code products like Power Apps.
+
+**Endpoints**
+
+Each connector exposes what we call "Endpoints".  Endpoints are the basic capabilities exposed by a connector. Think of these capabilities as things like "Save a Sales Order", "Query for recently changed Contacts".  We will go into much more detail about how endpoints are used, but some of the basic uses are Data Hub publishers and subscribers, Workflow triggers and actions, and API Gateway Data Providers.
 
 **Version Control**
 
@@ -117,9 +121,12 @@ In the top right of the Data Hub design view is an "Actions" button.  The action
 
 
 
+
 ### Workflows
 
 ### API Gateway
+
+### Endpoint Configuration
 
 ### Deployment
 
