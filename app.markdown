@@ -11,7 +11,7 @@ permalink: /app/
 A connector is a data source that can push and receive data on the Central Integraton Platform.  Think of a connector as the foundation of the house, and everything else sits on top of it.  We have a number of implementation options for connectors.
 
 1. Prebuilt connectors to many of the industry leading SaaS based products like Microsoft Dynamics and Salesforce
-2. Connectors to your own company owned REST API's, Relational Databases, or FTP locations
+2. Connectors to your company owned REST API's, Relational Databases, or FTP locations
 3. Build your own connectors with the Central SDK
 
 
@@ -34,12 +34,12 @@ A Workflow is different than a Data Hub in that it has a defined start and stop 
 
 The API Gateway is the centerpiece of the Central Integration Platform.  All of the data that flows through Central goes through the API Gateway.  That includes all of the event messages triggered from Data Hubs and Workflows.  It also includes two features we call Webhooks and Data Providers.
 
-- Webhooks are endpoints that can receive an event from an external party.  Webhooks can be used to receive an event from a commercial SaaS system.  Webhooks are also a good way for external partners or vendors that you may be sharing data with to send data into Central to trigger a Data Hub or Workflow.
+- Webhooks are endpoints that can receive an event from an external party.  Webhooks can be used to receive an event from a commercial SaaS system.  Webhooks are also a good way for external partners or vendors to send data into Central to trigger a Data Hub or Workflow.
 - Data Providers give read/query access into all of your data sources from one spot.  Data Providers are great for aggregating data from multiple sources to provide functionality to custom applications, intranet pages, low code products like Power Apps.
 
 **Endpoints**
 
-Each connector exposes what we call "Endpoints".  Endpoints are the basic capabilities exposed by a connector. Think of these capabilities as things like "Save a Sales Order", "Query for recently changed Contacts".  We will go into much more detail about how endpoints are used, but some of the basic uses are Data Hub publishers and subscribers, Workflow triggers and actions, and API Gateway Data Providers.
+Each connector exposes what we call "Endpoints".  Endpoints are the basic capabilities exposed by a connector. Think of these capabilities as things like "Save a Sales Order", "Query for recently changed Contacts".  We will go into much more detail about how endpoints are configured, but some of the basic uses are Data Hub publishers and subscribers, Workflow triggers and actions, and API Gateway Data Providers.
 
 **Version Control**
 
@@ -97,7 +97,7 @@ Often time connectors need to be updated for a given situation i.e. API version 
 
 Deciding how to design a Data Hub is largely determined by your requirements and your preferred way to logically organize your integrations.  There is no right or wrong way to do it, but the suggested thought process is to group a particular type of data like "Customers" or a particular business process "Lead to Close".
 
-From the Build menu you can select "Data Hubs" to manage all of the Data Hubs for your particular environment.  In the top left corner you can select "Add" to add a new Data Hub.
+From the Build menu you can select "Data Hubs" to manage all of the Data Hubs for your particular environment.  In the top left corner you can select "Add" to add a new Data Hub.  All Data Hubs are created initially as Drafts and will not be flipped to Live until it is ready for production.
 
 <img 
     style="display: block; 
@@ -119,8 +119,65 @@ In the top right of the Data Hub design view is an "Actions" button.  The action
     alt="Add Data Hub"
 />
 
+**Add Endpoint**
+
+Adding an endpoint is a simple 3 step process.
+1. Select your connector - pick from the existing connectors you have configured
+2. Give the endpoint a name and select your data source - the data source is the type of data provided by the connector i.e. Customers, Orders, Invoices, Employees
+3. Pick the type of connector - for a Data Hub this is going to be publisher (pushes data), subscriber (receives data), both (bi-directional)
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/add-endpoint.png" 
+    alt="Add Endpoint"
+/>
 
 
+**Manage Drop Downs**
+
+A Drop Down is a type of Cross Reference and Master Data Management capability within Central.  Think of a scenario where you are synchronizing something like an Employee from your HRIS to your ERP, and part of that Employee data you want replicated into the ERP is the Job Title.  A Drop Down allows you to store the values of that Job Title across your HRIS and ERP so that when that Employee record gets written to the ERP the correct Job Title Id is selected.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/manage-drop-downs.png" 
+    alt="Manage Drop Downs"
+/>
+
+Each Drop Down value is name value pair just like what would show up in a "drop down" list in an application.  The Name and System are used to match the correct value for the connector that is executing the logic.
+
+Every Drop Down Field is associated inside the Data Hub with a particular Entity Type, which in this case for a Job Title is a "Person".  Also the Field Name of the Drop Down MUST have the same name as the Foreign Key field it is mapped to.  More on field mapping below under Endpoint Configuration.
+
+**View Code**
+
+It is not actual code.  Think of this as the configured instructions that you want your Data Hub to interpret and execute.  The "View Code" capability allows you to see the raw Json that the App is maintaining.  View Code can also be used for more advanced platform features that we have not yet included in the UI.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/code-view.png" 
+    alt="Code View"
+/>
+
+
+**View Current Draft/Live**
+
+If you have both a current Draft and Live version of the Data Hub this allows you to flip back and forth across both versions.
+
+**Deploy**
+
+If you are viewing a Draft version of the Data Hub you can deploy directly from the Build screens.  This will do the same thing as deploying from the actual Deploy screens.
+
+**Delete Data Hub**
+
+If a Data Hub is no longer needed it can be deleted.  If a Data Hub is accidentally deleted it can always be recovered by making a support request.
 
 ### Workflows
 
