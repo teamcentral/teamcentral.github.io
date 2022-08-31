@@ -49,6 +49,12 @@ We will go into more detail on version control in the Deployment Section, but as
 2. Draft - version that is currently in design/build phase
 3. Previous Deploy - version that was running in production at some previous point in time
 
+**Central Index**
+
+The Central Integration Platform is not just a "data mover" product.  We are a full data management platform that is actively monitoring the health of your data.  One of the key aspects in doing that is a feature we call the Central Index.  Think of the Central Index as a master database that links and cross references all of the key pieces of information that run your business.
+
+How is this helpful?  A great example of that is a pretty typical automation we perform for generating Sales Orders in your financial system.  A Sales Order can be a somewhat complex data structure.  It has the basic information like the Order Date, but it also holds references to many other pieces of information spread across your business - Sales Rep, Customer, Region/Area of the Business the Order was placed for, Products/Services being purchased.  The Central Index plays a large role in aggregating master data across systems so that when an automation like "Creating a Sales Order" is executing in your financial system all of those bits of information mentioned above can be set appropriately.
+
 ### Connectors
 Central supports really any type of data source: Web API's, Databases, SFTP, etc.  There are three main ways that we achieve this connectivity.  The first is we have a library of prebuilt connectors for many popular SaaS products like Salesforce, Microsoft Dynamics, and Oracle Netsuite.  The second is we provide the ability for customers to connect their own proprietary REST API's, SQL Server Databases, and SFTP locations into Central.  The third option is individual developers can use the Central SDK to build their own connectors for private use or to publish for the community.
 
@@ -116,7 +122,7 @@ In the top right of the Data Hub design view is an "Actions" button.  The action
            margin-right: auto;
            width: 30%;"
     src="/images/data-hub-actions-button.png" 
-    alt="Add Data Hub"
+    alt="Actions"
 />
 
 **Add Endpoint**
@@ -180,6 +186,44 @@ If you are viewing a Draft version of the Data Hub you can deploy directly from 
 If a Data Hub is no longer needed it can be deleted.  If a Data Hub is accidentally deleted it can always be recovered by making a support request.
 
 ### Workflows
+
+As mentioned above in the definitions Workflows are used in two specific cases within Central.  
+
+1. For batch oriented processing that usually requires some sort of file upload or download
+2. For automations that require a more structured or orchestrated set of steps that would not work well within a Data Hub.
+
+It is important to note that currently the design view for Workflows only works with Scenario #1.  If your use case requires Scenario #2 someone on the Central support team can assist in building that out.
+
+There a 3 main constructs that make up a Central Workflow.
+1. Trigger - the event that starts a workflow, Triggers can fire based on a schedule or based on a real time event with a webhook
+2. Step - there are two types of Steps, General Steps are just a logical way to group Actions and organize your Workflow, Conditional Steps are a way to establish logic in your Workflow i.e. If This Then That
+3. Action - code that can be executed on a particular Connector End Point, there are 3 types of Actions, Save Actions can process a save much like a Data Hub and then save any keys back to the Central Index, Set Data Actions can mutate the data that is running through the Workflow adding additional data to it, Simple Execute Actions are actions that just fire and have not return value i.e. Send an Email, Execute a Power Shell script
+
+From the Build menu you can select "Workflows" to manage all of the Workflows for your particular environment.  In the top left corner you can select "Add" to add a new Workflow.  All Workflows are created initially as Drafts and will not be flipped to Live until it is ready for production.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/add-workflow.png" 
+    alt="Add Workflow"
+/>
+
+In the top right of the Workflow design view is an "Actions" button.  The actions button contains all of the functionality on a Workflow.  The action button for Workflow has some of the same capability as Data Hub - Code View, Deploy, Flip between Versions.
+
+**Add Trigger**
+
+The user experience for adding a Trigger to your Workflow is the same as adding a Data Hub Endpoint.  Select a Connector, give the Trigger a Name and Data Source, and then select the type of Trigger.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/add-workflow-trigger.png" 
+    alt="Add Workflow Trigger"
+/>
 
 ### API Gateway
 
