@@ -225,6 +225,7 @@ The user experience for adding a Trigger to your Workflow is the same as adding 
     alt="Add Workflow Trigger"
 />
 
+**Add Steps**
 Once the Trigger has been added you are ready to start adding Steps to your Workflow.  Click the "New Step" button in the top right corner of the designer and give the Step a name.  There is no exact way to organize your Steps.  Think of a "General" Step as a container for your Actions.  You can have a single step with all of the Actions inside of it or you can group your Actions into multiple Steps.
 
 <img 
@@ -236,6 +237,7 @@ Once the Trigger has been added you are ready to start adding Steps to your Work
     alt="Add Workflow Step"
 />
 
+**Add Actions**
 Once the step has been added you can rename it, delete it, and manage the actions within it.
 
 <img 
@@ -255,6 +257,59 @@ The final piece of your Workflow is to add Actions to take.  Click the "Add Acti
 4. Simple Execute No Input - executes some type of logic that takes in no input
 
 ### API Gateway
+
+As previously mentioned the API Gateway is at the center piece of the Central Integration Platform.  Every bit of data that flows through Central goes through our API.  That includes all of our messages, message logs, configuration management, querying data sources, etc
+
+From a configuration stand point there are 4 main features you can configure on the API Gateway.  Each feature has the same user experience to Add/Edit/Remove.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 40%;"
+    src="/images/api-gateway-features.png" 
+    alt="API Gateway Features"
+/>
+
+**Data Providers**
+
+As mentioned in the Definitions section Data Providers are a way to "query" all of your Data Sources.  Setting up a new Data Provider is the same process as Data Hub Endpoints, with the only exception that the type selected on the final step is "Data Provider".
+
+**Vendor Webhooks**
+
+Central supports two types of Webhooks - Custom and Vendor.  Custom Webhooks are covered in more detail in the "Developer" section of the documentation.  Vendor Webhooks are implementation specific to the Vendor that is propagating the message.  When setting up a Vendor Webhook there are 4 main inputs.
+
+1. Entity Type - type of data that is submitted on the Webhook
+2. Resource - most Webhooks have some type of scope or event type on the message, that is what we refer to as the Resource
+3. Topic - this is what routes the message to a particular topic in Central (warning this currently requires the user to input the "ID" in a future release this will be a drop down menu you can select from a list)
+4. Transaction Type - the default value for the Webhook should be "Save {Entity Type Name}".  You can however give the Transaction Type a more specialized value that the subscribers on this topic can be listening for i.e. Delete Data
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 50%;"
+    src="/images/add-api-webhook.png" 
+    alt="Add API Webhook"
+/>
+
+**Key Replications**
+
+Key Replication provides the capability to take a unique/primary key from one system and replicate it to another system.  The way in which this works inside of Central is the Key Replication Logic looks at the Index for the existence of a key for both the source and destination.  Once the Index has both then the key is sent down and replicated to the destination.
+
+When setting up a Key Replication there are 4 main inputs.
+
+1. Entity Type - the type of data we are replicating the Key for
+2. Source System - the name of the System the Key is coming from
+3. Destination System - the name of the System the Key is going to
+4. Destination Custom Field Name - the name of the field that is storing the replicated Key
+
+....Need updated screen
+
+**Activity Types**
+
+Activity Types are a configuration setting for an app we call the Central Newsfeed.  Activity Types are a way of configuring the types of data that you want included in the Newsfeed.  Examples of different types of activity include New Employees, Sold Opportunities, Birthdays, Work Anniversaries.  Really any type of data Central is processing can be included in our Newsfeed.  If you have interest in configuring the Newsfeed for your environment please talk to your Sales or Customer Service Rep.
+
 
 ### Endpoint Configuration
 
