@@ -214,7 +214,7 @@ In the top right of the Workflow design view is an "Actions" button.  The action
 
 **Add Trigger**
 
-The user experience for adding a Trigger to your Workflow is the same as adding a Data Hub Endpoint.  Select a Connector, give the Trigger a Name and Data Source, and then select the type of Trigger.
+The user experience for adding a Trigger to your Workflow is the same as adding a Data Hub Endpoint.  Once you click the add Trigger button it will walk your through the 3 step process to....Select a Connector, give the Trigger a Name and Data Source, and then select the type of Trigger.
 
 <img 
     style="display: block; 
@@ -224,6 +224,35 @@ The user experience for adding a Trigger to your Workflow is the same as adding 
     src="/images/add-workflow-trigger.png" 
     alt="Add Workflow Trigger"
 />
+
+Once the Trigger has been added you are ready to start adding Steps to your Workflow.  Click the "New Step" button in the top right corner of the designer and give the Step a name.  There is no exact way to organize your Steps.  Think of a "General" Step as a container for your Actions.  You can have a single step with all of the Actions inside of it or you can group your Actions into multiple Steps.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/add-workflow-step.png" 
+    alt="Add Workflow Step"
+/>
+
+Once the step has been added you can rename it, delete it, and manage the actions within it.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/manage-workflow-step.png" 
+    alt="Manage Workflow Step"
+/>
+
+The final piece of your Workflow is to add Actions to take.  Click the "Add Action" button in the top right of the Step and it will walk your through the process of creating an Action Endpoint.  Adding a Workflow Action is the same bascic process as adding other Endpoints with the main difference being you have multiple options for the type of Action you can select.
+
+1. Save - kind of like a Subscriber step, calls a Connector save
+2. Set More Data - appends additional data to the item moving through the Workflow
+3. Simple Execute - executes some type of logic that takes in item moving through the Workflow
+4. Simple Execute No Input - executes some type of logic that takes in no input
 
 ### API Gateway
 
