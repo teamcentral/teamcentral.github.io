@@ -315,12 +315,34 @@ Activity Types are a configuration setting for an app we call the Central Newsfe
 
 Endpoint Configuration is broken down into 6 major areas.
 
-1. Data Source
-2. Filters
-3. Scheduler
-4. Simple Maps
-5. Nested Maps
-6. Variables
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 50%;"
+    src="/images/endpoint-configuration.png" 
+    alt="Endpoint Configuration"
+/>
+
+**Data Source**
+
+Think of the Data Source configuration as the "tip of the spear" for the Endpoint.  On a Web Services Endpoint this will be the routes that we hit to query and save data.  For a Database Endpoint this would be potentially Stored Procedures or set of SQL Statements to access the data.   
+
+**Filters**
+
+
+**Scheduler**
+
+
+**Simple Maps**
+
+
+**Nested Maps**
+
+
+**Variables**
+
+
 
 ### Deployment
 
