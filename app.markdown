@@ -313,9 +313,52 @@ Activity Types are a configuration setting for an app we call the Central Newsfe
 
 ### Endpoint Configuration
 
+Endpoint Configuration is broken down into 6 major areas.
+
+1. Data Source
+2. Filters
+3. Scheduler
+4. Simple Maps
+5. Nested Maps
+6. Variables
+
 ### Deployment
 
+As mentioned previously Central has a built in version control feature with 3 main stages Draft, Live, and Previous Deploy.  The deployment screen is the main area where versions are managed.  Each capability within Central (Data Hub, Workflow, API Gateway) all use the same flow for build and deploy.  This flow starts with creating a Draft on the Build screens to design and build the configuration to meet your requirements.  Once that Draft is complete and ready for production you will flip it to Live.  If there are issues with something that is Live and you need to revert back to a previous configuration you can do so by deploying a Previous Deploy.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/deploy.png" 
+    alt="Deploy"
+/>
+
+The Actions button next to each version is where you go to add comments and release notes to your deploy.  The Actions button is also where you go to trigger a deploy.  When triggering deployment the selected Draft version is moved to Live and the current Live version is moved to Previous Deploy.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 30%;"
+    src="/images/deploy-actions.png" 
+    alt="Deploy Actions"
+/>
+
 ### Monitoring
+
+**Message Logs**
+Think of a "message" as the container or wrapper for the data that is moved throughout the Central Integration Platform.  The payload within the message stores the data that is used by the Endpoint to perform some type of data transaction.  The Message Log capability allows you to search for messages by any combination Entity Type, System, and Primary Key.  In addition to searching and viewing the message, you can also re-run a transaction that may have failed for some reason.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/message-logs.png" 
+    alt="Message Logs"
+/>
 
 ### Individual Connector Instructions
 
