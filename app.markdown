@@ -328,8 +328,28 @@ Endpoint Configuration is broken down into 6 major areas.
 
 Think of the Data Source configuration as the "tip of the spear" for the Endpoint.  On a Web Services Endpoint this will be the routes that we hit to query and save data.  For a Database Endpoint this would be potentially Stored Procedures or set of SQL Statements to access the data.   
 
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/endpoint-data-source.png" 
+    alt="Endpoint Data Source"
+/>
+
+- Insert Path - POST route to insert an entity
+- Update Path - PATH or PUT route to update an entity
+- Query Path - GET route that is used to query a single instance of an entity.  The syntax we use to inject some type of unique identifier /someentity/'{0}'.  The '{0}' will automatically put the value from the Primary Key map into the route.  You can also attach "Additional Query String Parameters" on the back of the route to make the full route look like this {QueryPath}{Additional Query String Parameters}.
+- List Query Path - GET route that is used to query a list of entities.  When working with List data the full path of the GET route you can configure looks like this {Base Route from Connector}{List Query Path}{Additional Query String Parameters}{Filter}.  The "Additional Query String Parameters" and "Filter" are not required.  For some connectors the route is standard REST syntax /someentity?parm1=value.  For other connectors like Salesforce (SOQL) and Dynamics (OData) they have more advanced query capability you can add into the route.
+- Additional Query String Parameters - Use this feature on the GET route if you have some type of static Query Parameters you want attached to your GET and possibly used on both the Query and List Query.  This can be helpful on things like OData "expand" capability.
+- Filter - Use this feature to limit the data coming out of the Data Source.  This capability for "Publishers" is used to query based on modification date.  For example, you could have a filter with ?dateLastModified={0:s}Z that would filter out recently modified records since the last poll.
+- List Response Selector - Use this feature if the data that you are querying is embedded inside of a property on the json.  For example, Salesforce embeds the results in a property called "records", so that value would be set for the List Response Selector.
+- Response Selector - Use this feature just like the List Response Selector but for single instance.  For the Salesforce example above the value would be records[0].
+
+
 **Filters**
 
+In addition to the Data Source Filtering you can also add on your Publishers and Subscribers to further restrict any data on the Endpoint that should be processed.
 
 **Scheduler**
 
