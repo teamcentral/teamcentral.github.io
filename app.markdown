@@ -353,15 +353,42 @@ In addition to the Data Source Filtering you can also add on your Publishers and
 
 **Scheduler**
 
+A Scheduler is a way to trigger an Endpoint for a given point in time.  There are three different types of Schedulers
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/endpoint-scheduler.png" 
+    alt="Endpoint Scheduler"
+/>
+
+1. Interval - Great to use for our "near real time" Publishers that wake up every minute or so and check for changes.
+2. Day of Week - Runs on specific days of the week and time.
+3. Day of Month - Runs on specific days of the month and time.
+
+On a Day of Month schedule you can also set which we call a Run Condition with 4 main options.
+
+- Any Day
+- Week Day Only Advance - if the schedule falls on a weekend it "advances" to the next available business day
+- Week Day Only Skip - if the schedule falls on a weekend it skips that run completely
+- Weekend Only
 
 **Simple Maps**
 
+How Central implements mapping is one of the most important aspects of understanding the platform.  The first major concept is that Central uses what we call our common model.  Each Endpoint is tied to a particular type of entity (Person, Company, Sales Order, etc).
 
 **Nested Maps**
 
 
 **Variables**
 
+Variables are a way of injecting Global Values into your Endpoint.  The following Connector Endpoints can use Variables today.
+
+- Active Directory Users - isEmployeeIdUnique
+- ADP Workers - templateName
+- O365 Term Store - siteName, termGroupName, termSetName
 
 
 ### Deployment
