@@ -377,7 +377,79 @@ On a Day of Month schedule you can also set which we call a Run Condition with 4
 
 **Simple Maps**
 
-How Central implements mapping is one of the most important aspects of understanding the platform.  The first major concept is that Central uses what we call our common model.  Each Endpoint is tied to a particular type of entity (Person, Company, Sales Order, etc).
+How Central implements mapping is one of the most important aspects of understanding the platform.  The first major concept is that Central is built on what we call our common model.  What that means is all of the data that is flowing through Central is associated to a particular type of entity (Person, Company, Sales Order, etc).  Each entity type has aspects that are unique, which are classified as "Properties".  Think of a property as the First Name of a Person or the Order Date of a Sale.  In addition to Properties all Central entities share three common aspects.
+
+1. Primary Keys - the unique identifers for the entity
+2. Foreign Keys - the link between two entities, as an example think of the ID of a Customer that is tied to a Sales Order
+3. Custom Data - the unique fields that allow you to extend our model for requirements that are unique to your specific business rules
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;"
+    src="/images/endpoint-mapping.png" 
+    alt="Endpoint Mapping"
+/>
+
+The reason this is significant to understand from a mapping stand point is when you map data from a Publishing Endpoint you will map the connectors data from their structure into the Central Common Model, and vice versa on Subscribing Endpoints you will map the data from the Central Common Model to the data structure of the connector.  Each type of map has slight differences in how it is set.  The example below is a Property map where you select the property on the Central Common Model and tie that to a property on the connector.  You can also do things like set a fixed value if the value being set in either direction is always the same.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 40%;"
+    src="/images/endpoint-mapping-example.png" 
+    alt="Endpoint Mapping"
+/>
+
+Foreign Key maps have a few more values to set.  The Key Name is the unique name of the key on the model.  It is critical that the Key Name matches on your entities across Endpoints.  The Key Type represents the type of Entity the Key is associated to.  In some cases a key will be associated to a generic domain value like Order Status or Employee Type.  In those cases select "General System Lookup".
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 40%;"
+    src="/images/endpoint-mapping-example-fk.png" 
+    alt="Endpoint Mapping"
+/>
+
+In addition each mapping type also has their own set of "Advanced Settings".  The example below on a Property map shows the ability that you can set the specific read/write operations that the map adheres to.  Allowing the map to become read or write only on this particular Endpoint
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 40%;"
+    src="/images/endpoint-mapping-example-advanced.png" 
+    alt="Endpoint Mapping"
+/>
+
+In some cases mored advanced mapping logic is needed to meet your specific business requirements.  Those cases often require what we call "Mapping Transforms".  You can manage Transforms on a map by clicking the "wand" icon at the right side of each map item. 
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 10%;"
+    src="/images/endpoint-mapping-transform-open.png" 
+    alt="Endpoint Mapping"
+/>
+
+There are currently twelve different types of transforms we support.  In some cases a transform requires the combination of multiple values.  In this scenario for Publishing Endpoints click the "Use Multiple" link above the connector properties to add more than one connector to the map, and for Subscriber Endpoints use the "Multi-Value" mapping section.
+
+- Business Logic Map - inject conditional logic into a map i.e. if this value equals this and another value equals that then return a value
+- Business Logic Map Simple - same as Business Logic but streamlined i.e. this value returns that value
+- Compute Expression - can be used for match computation on a map or more advanced logic that does not fit into a Business Logic Map.  Compute expressions use the syntax provided by [Microsoft .NET](https://learn.microsoft.com/en-us/dotnet/api/system.data.datatable.compute?view=net-6.0)
+- CSV to List - can take a comma separated value and transform it to a "List of strings"
+- Default Value - executes on a create to set a static value
+- Formatting Template - takes one or more values and returns a formatted string, great for things like formatting currency data
+- Invoke Instance Method - can call a .NET "System" method on an instance class System.DateTime.AddMonths
+- Invoke Static Method - can call a .NET "System" method on a static class System.Math.Round
+- Invoke Static Property - can call a .NET "System" static property System.DateTime.UtcNow
+- JSON Contains - can look for the existence of a value in a Json string
+- Parse to JSON 
+- Regex Replace - use Regular Expressions to change the value of a map
 
 **Nested Maps**
 
@@ -389,6 +461,9 @@ Variables are a way of injecting Global Values into your Endpoint.  The followin
 - Active Directory Users - isEmployeeIdUnique
 - ADP Workers - templateName
 - O365 Term Store - siteName, termGroupName, termSetName
+
+### Endpoint Relationships
+
 
 
 ### Deployment
