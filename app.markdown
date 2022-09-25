@@ -161,7 +161,7 @@ Every Drop Down Field is associated inside the Data Hub with a particular Entity
 
 **View Code**
 
-It is not actual code.  Think of this as the configured instructions that you want your Data Hub to interpret and execute.  The "View Code" capability allows you to see the raw Json that the App is maintaining.  View Code can also be used for more advanced platform features that we have not yet included in the UI.
+It is not actual code.  Think of this as the configured instructions that you want your Data Hub to interpret and execute.  The "View Code" capability allows you to see the raw JSON that the App is maintaining.  View Code can also be used for more advanced platform features that we have not yet included in the UI.
 
 <img 
     style="display: block; 
@@ -343,7 +343,7 @@ Think of the Data Source configuration as the "tip of the spear" for the Endpoin
 - List Query Path - GET route that is used to query a list of entities.  When working with List data the full path of the GET route you can configure looks like this {Base Route from Connector}{List Query Path}{Additional Query String Parameters}{Filter}.  The "Additional Query String Parameters" and "Filter" are not required.  For some connectors the route is standard REST syntax /someentity?parm1=value.  For other connectors like Salesforce (SOQL) and Dynamics (OData) they have more advanced query capability you can add into the route.
 - Additional Query String Parameters - Use this feature on the GET route if you have some type of static Query Parameters you want attached to your GET and possibly used on both the Query and List Query.  This can be helpful on things like OData "expand" capability.
 - Filter - Use this feature to limit the data coming out of the Data Source.  This capability for "Publishers" is used to query based on modification date.  For example, you could have a filter with ?dateLastModified={0:s}Z that would filter out recently modified records since the last poll.
-- List Response Selector - Use this feature if the data that you are querying is embedded inside of a property on the json.  For example, Salesforce embeds the results in a property called "records", so that value would be set for the List Response Selector.
+- List Response Selector - Use this feature if the data that you are querying is embedded inside of a property on the JSON.  For example, Salesforce embeds the results in a property called "records", so that value would be set for the List Response Selector.
 - Response Selector - Use this feature just like the List Response Selector but for single instance.  For the Salesforce example above the value would be records[0].
 
 
@@ -447,12 +447,35 @@ There are currently twelve different types of transforms we support.  In some ca
 - Invoke Instance Method - can call a .NET "System" method on an instance class System.DateTime.AddMonths
 - Invoke Static Method - can call a .NET "System" method on a static class System.Math.Round
 - Invoke Static Property - can call a .NET "System" static property System.DateTime.UtcNow
-- JSON Contains - can look for the existence of a value in a Json string
-- Parse to JSON 
+- JSON Contains - can look for the existence of a value in a JSON string
+- Parse to JSON - can take values off of the model and generate sections of JSON data
 - Regex Replace - use Regular Expressions to change the value of a map
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 50%;"
+    src="/images/endpoint-mapping-transform.png" 
+    alt="Endpoint Mapping Transform"
+/>
 
 **Nested Maps**
 
+Nested maps are used in two main scenarios.
+1. If you have a very hierarchical and complex JSON or XML structure that needs to be created
+2. If you have a Child List you want to create.  An example of a child list may be something like a list of Line Items on a Sales Order.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 50%;"
+    src="/images/endpoint-mapping-nested-maps.png" 
+    alt="Endpoint Mapping - Nested Maps"
+/>
+
+Each section of the Nested Map is broken out into Groups.  You can create as many groups as needed and you can nest a Group within another group.  Inside of a Group are the Maps.  That is where the Specific Mappings are set just like the Simple Maps (Primary Key, Foreign Keys, Properties, Custom Data).
 
 **Variables**
 
@@ -464,7 +487,21 @@ Variables are a way of injecting Global Values into your Endpoint.  The followin
 
 ### Endpoint Relationships
 
+There are two type of relationships you can create between Endpoints.
 
+1. Children - a Child Endpoint has a different Data Source than the Parent, but is processed in the same message payload as its parent.  An example of this could be Line Items on a Sales Order.  This is very similar to a Nested Map List.  The difference is the calls to save the Line Items are on completely separate routes and calls per Line.
+2. Dependent Publishers - a Dependent Publisher is used when one Endpoint must ensure that it is completely in sync before its dependency can try to sync.  An example of a Dependent Publisher would be something like a Customer Endpoint and and Opportunity Endpoint.  In all likelihood the Opportunity has a dependency to a Customer.  The Dependent Publisher ensures that all Customer records have been synced before any potentially dependent Opportunity Records can be synced.
+
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 40%;"
+    src="/images/endpoint-relationships.png" 
+    alt="Endpoint Relationships"
+/>
+
+Relationships are managed in the top right corner of the Endpoint.  You can view all of the Relationships and add new Relationships from this drop down menu.
 
 ### Deployment
 
