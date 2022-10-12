@@ -3,10 +3,18 @@ layout: page
 title: App
 permalink: /app/
 ---
+### Table of Contents
+
+* [Connectors](#connectors)
+  * [Data Hubs](#data-hubs)
+* [Work Flows](#workflows)
+  * [Batch Processing](#batch-processing)
+  * [Scenarios](#scenarios)
+* [API Gateway](#api-gateway)
 
 ### Definitions
 
-**Connectors**
+**CONNECTORS**
 
 A connector is a data source that can push and receive data on the Central Integraton Platform.  Think of a connector as the foundation of the house, and everything else sits on top of it.  We have a number of implementation options for connectors.
 
@@ -26,14 +34,13 @@ A good example of a typical Data Hub is the automation of creating a sale where 
 
 A Workflow is different than a Data Hub in that it has a defined start and stop with specific logic that orchestrates actions to take.  Workflows are an implementation of what we call "orchestration architecture".  Workflows on the Central Integration Platform are used in 2 main scenarios.
 
-1. Batch processing, where usually some sort of file triggers the workflow or is produced as a result
-2. Scenarios that require specific steps to be taken in a particular order that does not fit well into a Data Hub.
+1. Batch processing<a name="batch-processing"></a>, where usually some sort of file triggers the workflow or is produced as a result
+2. Scenarios<a name="scenarios"></a> that require specific steps to be taken in a particular order that does not fit well into a Data Hub.
 
 
 **API Gateway**
 
 The API Gateway is the centerpiece of the Central Integration Platform.  All of the data that flows through Central goes through the API Gateway.  That includes all of the event messages triggered from Data Hubs and Workflows.  It also includes two features we call Webhooks and Data Providers.
-
 - Webhooks are endpoints that can receive an event from an external party.  Webhooks can be used to receive an event from a commercial SaaS system.  Webhooks are also a good way for external partners or vendors to send data into Central to trigger a Data Hub or Workflow.
 - Data Providers give read/query access into all of your data sources from one spot.  Data Providers are great for aggregating data from multiple sources to provide functionality to custom applications, intranet pages, low code products like Power Apps.
 
@@ -64,23 +71,33 @@ From the Build menu you can select "Connectors" to manage all of the connectors 
 
 From the manage connectors screen in the top right you can add a connector from our existing library or you can add your own custom connectors (more on adding your own custom connectors in the SDK section below).
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 30%;"
-    src="/images/add-connector.png" 
+           width: 30%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-connector.png"
     alt="Add Connector"
 />
 
 If you select "From Library" there is a simple two step process where you pick one of our existing connectors and then enter the details needed to connect to that particular endpoint.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/save-connector.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/save-connector.png"
     alt="Add Connector"
 />
 
@@ -88,14 +105,19 @@ Below are detailed instructions for connecting to each data source in our librar
 
 **Managing an existing connector**
 
-Often time connectors need to be updated for a given situation i.e. API version upgrade, Password expiration, etc.  You can change an existing connector by clicking the "pencil" icon on an existing connector.  You can remove a connector as well by clicking the "trash" icon.  Warning that deleted connectors will impact all integrations where that connector was included. 
+Often time connectors need to be updated for a given situation i.e. API version upgrade, Password expiration, etc.  You can change an existing connector by clicking the "pencil" icon on an existing connector.  You can remove a connector as well by clicking the "trash" icon.  Warning that deleted connectors will impact all integrations where that connector was included.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/modify-connector.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/modify-connector.png"
     alt="Modify Connector"
 />
 
@@ -105,23 +127,33 @@ Deciding how to design a Data Hub is largely determined by your requirements and
 
 From the Build menu you can select "Data Hubs" to manage all of the Data Hubs for your particular environment.  In the top left corner you can select "Add" to add a new Data Hub.  All Data Hubs are created initially as Drafts and will not be flipped to Live until it is ready for production.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/add-data-hub.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-data-hub.png"
     alt="Add Data Hub"
 />
 
 In the top right of the Data Hub design view is an "Actions" button.  The actions button contains all of the functionality on a Data Hub.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 30%;"
-    src="/images/data-hub-actions-button.png" 
+           width: 30%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/data-hub-actions-button.png"
     alt="Actions"
 />
 
@@ -132,12 +164,17 @@ Adding an endpoint is a simple 3 step process.
 2. Give the endpoint a name and select your data source - the data source is the type of data provided by the connector i.e. Customers, Orders, Invoices, Employees
 3. Pick the type of connector - for a Data Hub this is going to be publisher (pushes data), subscriber (receives data), both (bi-directional)
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/add-endpoint.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-endpoint.png"
     alt="Add Endpoint"
 />
 
@@ -146,12 +183,17 @@ Adding an endpoint is a simple 3 step process.
 
 A Drop Down is a type of Cross Reference and Master Data Management capability within Central.  Think of a scenario where you are synchronizing something like an Employee from your HRIS to your ERP, and part of that Employee data you want replicated into the ERP is the Job Title.  A Drop Down allows you to store the values of that Job Title across your HRIS and ERP so that when that Employee record gets written to the ERP the correct Job Title Id is selected.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/manage-drop-downs.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/manage-drop-downs.png"
     alt="Manage Drop Downs"
 />
 
@@ -163,12 +205,17 @@ Every Drop Down Field is associated inside the Data Hub with a particular Entity
 
 It is not actual code.  Think of this as the configured instructions that you want your Data Hub to interpret and execute.  The "View Code" capability allows you to see the raw JSON that the App is maintaining.  View Code can also be used for more advanced platform features that we have not yet included in the UI.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/code-view.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/code-view.png"
     alt="Code View"
 />
 
@@ -201,12 +248,17 @@ There a 3 main constructs that make up a Central Workflow.
 
 From the Build menu you can select "Workflows" to manage all of the Workflows for your particular environment.  In the top left corner you can select "Add" to add a new Workflow.  All Workflows are created initially as Drafts and will not be flipped to Live until it is ready for production.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/add-workflow.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-workflow.png"
     alt="Add Workflow"
 />
 
@@ -216,36 +268,51 @@ In the top right of the Workflow design view is an "Actions" button.  The action
 
 The user experience for adding a Trigger to your Workflow is the same as adding a Data Hub Endpoint.  Once you click the add Trigger button it will walk your through the 3 step process to....Select a Connector, give the Trigger a Name and Data Source, and then select the type of Trigger.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/add-workflow-trigger.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-workflow-trigger.png"
     alt="Add Workflow Trigger"
 />
 
 **Add Steps**
 Once the Trigger has been added you are ready to start adding Steps to your Workflow.  Click the "New Step" button in the top right corner of the designer and give the Step a name.  There is no exact way to organize your Steps.  Think of a "General" Step as a container for your Actions.  You can have a single step with all of the Actions inside of it or you can group your Actions into multiple Steps.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/add-workflow-step.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-workflow-step.png"
     alt="Add Workflow Step"
 />
 
 **Add Actions**
 Once the step has been added you can rename it, delete it, and manage the actions within it.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/manage-workflow-step.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/manage-workflow-step.png"
     alt="Manage Workflow Step"
 />
 
@@ -262,12 +329,17 @@ As previously mentioned the API Gateway is at the center piece of the Central In
 
 From a configuration stand point there are 4 main features you can configure on the API Gateway.  Each feature has the same user experience to Add/Edit/Remove.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 40%;"
-    src="/images/api-gateway-features.png" 
+           width: 40%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/api-gateway-features.png"
     alt="API Gateway Features"
 />
 
@@ -284,12 +356,17 @@ Central supports two types of Webhooks - Custom and Vendor.  Custom Webhooks are
 3. Topic - this is what routes the message to a particular topic in Central (warning this currently requires the user to input the "ID" in a future release this will be a drop down menu you can select from a list)
 4. Transaction Type - the default value for the Webhook should be "Save {Entity Type Name}".  You can however give the Transaction Type a more specialized value that the subscribers on this topic can be listening for i.e. Delete Data
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 50%;"
-    src="/images/add-api-webhook.png" 
+           width: 50%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-api-webhook.png"
     alt="Add API Webhook"
 />
 
@@ -315,12 +392,17 @@ Activity Types are a configuration setting for an app we call the Central Newsfe
 
 Endpoint Configuration is broken down into 6 major areas.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 50%;"
-    src="/images/endpoint-configuration.png" 
+           width: 50%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-configuration.png"
     alt="Endpoint Configuration"
 />
 
@@ -328,12 +410,17 @@ Endpoint Configuration is broken down into 6 major areas.
 
 Think of the Data Source configuration as the "tip of the spear" for the Endpoint.  On a Web Services Endpoint this will be the routes that we hit to query and save data.  For a Database Endpoint this would be potentially Stored Procedures or set of SQL Statements to access the data.   
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/endpoint-data-source.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-data-source.png"
     alt="Endpoint Data Source"
 />
 
@@ -355,12 +442,17 @@ In addition to the Data Source Filtering you can also add on your Publishers and
 
 A Scheduler is a way to trigger an Endpoint for a given point in time.  There are three different types of Schedulers
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/endpoint-scheduler.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-scheduler.png"
     alt="Endpoint Scheduler"
 />
 
@@ -383,56 +475,81 @@ How Central implements mapping is one of the most important aspects of understan
 2. Foreign Keys - the link between two entities, as an example think of the ID of a Customer that is tied to a Sales Order
 3. Custom Data - the unique fields that allow you to extend our model for requirements that are unique to your specific business rules
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/endpoint-mapping.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-mapping.png"
     alt="Endpoint Mapping"
 />
 
 The reason this is significant to understand from a mapping stand point is when you map data from a Publishing Endpoint you will map the connectors data from their structure into the Central Common Model, and vice versa on Subscribing Endpoints you will map the data from the Central Common Model to the data structure of the connector.  Each type of map has slight differences in how it is set.  The example below is a Property map where you select the property on the Central Common Model and tie that to a property on the connector.  You can also do things like set a fixed value if the value being set in either direction is always the same.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 40%;"
-    src="/images/endpoint-mapping-example.png" 
+           width: 40%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-mapping-example.png"
     alt="Endpoint Mapping"
 />
 
 Foreign Key maps have a few more values to set.  The Key Name is the unique name of the key on the model.  It is critical that the Key Name matches on your entities across Endpoints.  The Key Type represents the type of Entity the Key is associated to.  In some cases a key will be associated to a generic domain value like Order Status or Employee Type.  In those cases select "General System Lookup".
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 40%;"
-    src="/images/endpoint-mapping-example-fk.png" 
+           width: 40%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-mapping-example-fk.png"
     alt="Endpoint Mapping"
 />
 
 In addition each mapping type also has their own set of "Advanced Settings".  The example below on a Property map shows the ability that you can set the specific read/write operations that the map adheres to.  Allowing the map to become read or write only on this particular Endpoint
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 40%;"
-    src="/images/endpoint-mapping-example-advanced.png" 
+           width: 40%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-mapping-example-advanced.png"
     alt="Endpoint Mapping"
 />
 
-In some cases mored advanced mapping logic is needed to meet your specific business requirements.  Those cases often require what we call "Mapping Transforms".  You can manage Transforms on a map by clicking the "wand" icon at the right side of each map item. 
+In some cases mored advanced mapping logic is needed to meet your specific business requirements.  Those cases often require what we call "Mapping Transforms".  You can manage Transforms on a map by clicking the "wand" icon at the right side of each map item.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 10%;"
-    src="/images/endpoint-mapping-transform-open.png" 
+           width: 10%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-mapping-transform-open.png"
     alt="Endpoint Mapping"
 />
 
@@ -451,12 +568,17 @@ There are currently twelve different types of transforms we support.  In some ca
 - Parse to JSON - can take values off of the model and generate sections of JSON data
 - Regex Replace - use Regular Expressions to change the value of a map
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 50%;"
-    src="/images/endpoint-mapping-transform.png" 
+           width: 50%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-mapping-transform.png"
     alt="Endpoint Mapping Transform"
 />
 
@@ -466,12 +588,17 @@ Nested maps are used in two main scenarios.
 1. If you have a very hierarchical and complex JSON or XML structure that needs to be created
 2. If you have a Child List you want to create.  An example of a child list may be something like a list of Line Items on a Sales Order.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 50%;"
-    src="/images/endpoint-mapping-nested-maps.png" 
+           width: 50%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-mapping-nested-maps.png"
     alt="Endpoint Mapping - Nested Maps"
 />
 
@@ -492,12 +619,17 @@ There are two type of relationships you can create between Endpoints.
 1. Children - a Child Endpoint has a different Data Source than the Parent, but is processed in the same message payload as its parent.  An example of this could be Line Items on a Sales Order.  This is very similar to a Nested Map List.  The difference is the calls to save the Line Items are on completely separate routes and calls per Line.
 2. Dependent Publishers - a Dependent Publisher is used when one Endpoint must ensure that it is completely in sync before its dependency can try to sync.  An example of a Dependent Publisher would be something like a Customer Endpoint and and Opportunity Endpoint.  In all likelihood the Opportunity has a dependency to a Customer.  The Dependent Publisher ensures that all Customer records have been synced before any potentially dependent Opportunity Records can be synced.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 40%;"
-    src="/images/endpoint-relationships.png" 
+           width: 40%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/endpoint-relationships.png"
     alt="Endpoint Relationships"
 />
 
@@ -507,23 +639,33 @@ Relationships are managed in the top right corner of the Endpoint.  You can view
 
 As mentioned previously Central has a built in version control feature with 3 main stages Draft, Live, and Previous Deploy.  The deployment screen is the main area where versions are managed.  Each capability within Central (Data Hub, Workflow, API Gateway) all use the same flow for build and deploy.  This flow starts with creating a Draft on the Build screens to design and build the configuration to meet your requirements.  Once that Draft is complete and ready for production you will flip it to Live.  If there are issues with something that is Live and you need to revert back to a previous configuration you can do so by deploying a Previous Deploy.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/deploy.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/deploy.png"
     alt="Deploy"
 />
 
 The Actions button next to each version is where you go to add comments and release notes to your deploy.  The Actions button is also where you go to trigger a deploy.  When triggering deployment the selected Draft version is moved to Live and the current Live version is moved to Previous Deploy.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 30%;"
-    src="/images/deploy-actions.png" 
+           width: 30%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/deploy-actions.png"
     alt="Deploy Actions"
 />
 
@@ -532,12 +674,17 @@ The Actions button next to each version is where you go to add comments and rele
 **Message Logs**
 Think of a "message" as the container or wrapper for the data that is moved throughout the Central Integration Platform.  The payload within the message stores the data that is used by the Endpoint to perform some type of data transaction.  The Message Log capability allows you to search for messages by any combination Entity Type, System, and Primary Key.  In addition to searching and viewing the message, you can also re-run a transaction that may have failed for some reason.
 
-<img 
-    style="display: block; 
+<img
+    style="display: block;
            margin-left: auto;
            margin-right: auto;
-           width: 80%;"
-    src="/images/message-logs.png" 
+           width: 80%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/message-logs.png"
     alt="Message Logs"
 />
 
@@ -564,4 +711,3 @@ Taleo
 Degreed
 
 Autodesk
-

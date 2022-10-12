@@ -1,0 +1,22 @@
+---
+layout: default
+output:
+  html_document:
+    toc: true
+    toc_float:
+    toc_depth: 3
+    number_sections: true
+---
+<div class="title-text">{{ site.title | escape }}</div>
+
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
