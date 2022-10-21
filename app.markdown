@@ -1,20 +1,11 @@
 ---
-layout: page
+layout: page-toc
 title: App
 permalink: /app/
 ---
-### Table of Contents
-
-* [Connectors](#connectors)
-  * [Data Hubs](#data-hubs)
-* [Work Flows](#workflows)
-  * [Batch Processing](#batch-processing)
-  * [Scenarios](#scenarios)
-* [API Gateway](#api-gateway)
-
 ### Definitions
 
-**CONNECTORS**
+#### CONNECTORS
 
 A connector is a data source that can push and receive data on the Central Integraton Platform.  Think of a connector as the foundation of the house, and everything else sits on top of it.  We have a number of implementation options for connectors.
 
@@ -23,14 +14,14 @@ A connector is a data source that can push and receive data on the Central Integ
 3. Build your own connectors with the Central SDK
 
 
-**Data Hubs**
+#### Data Hubs
 
 A Data Hub is an implementation of what we call "event driven architecture".  What that basically means is inside of a Data Hub we have endpoints on each connector that can trigger an event.  Think of these events in the context of activity within your business - "creating a sale", "hiring a new employee", "billing the customer".  We call the trigger for an event the publisher.  In addition to the publisher you can configure connector endpoints that can listen and consume a particular event.  We call these endpoints the subscribers.
 
 A good example of a typical Data Hub is the automation of creating a sale where my CRM system may trigger an event that an Opportunity has been won (publisher) and my financial system would receive that event and generate a Sales Order (subscriber).
 
 
-**Workflows**
+#### Workflows
 
 A Workflow is different than a Data Hub in that it has a defined start and stop with specific logic that orchestrates actions to take.  Workflows are an implementation of what we call "orchestration architecture".  Workflows on the Central Integration Platform are used in 2 main scenarios.
 
@@ -38,17 +29,17 @@ A Workflow is different than a Data Hub in that it has a defined start and stop 
 2. Scenarios<a name="scenarios"></a> that require specific steps to be taken in a particular order that does not fit well into a Data Hub.
 
 
-**API Gateway**
+#### API Gateway
 
 The API Gateway is the centerpiece of the Central Integration Platform.  All of the data that flows through Central goes through the API Gateway.  That includes all of the event messages triggered from Data Hubs and Workflows.  It also includes two features we call Webhooks and Data Providers.
 - Webhooks are endpoints that can receive an event from an external party.  Webhooks can be used to receive an event from a commercial SaaS system.  Webhooks are also a good way for external partners or vendors to send data into Central to trigger a Data Hub or Workflow.
 - Data Providers give read/query access into all of your data sources from one spot.  Data Providers are great for aggregating data from multiple sources to provide functionality to custom applications, intranet pages, low code products like Power Apps.
 
-**Endpoints**
+#### Endpoints
 
 Each connector exposes what we call "Endpoints".  Endpoints are the basic capabilities exposed by a connector. Think of these capabilities as things like "Save a Sales Order", "Query for recently changed Contacts".  We will go into much more detail about how endpoints are configured, but some of the basic uses are Data Hub publishers and subscribers, Workflow triggers and actions, and API Gateway Data Providers.
 
-**Version Control**
+#### Version Control
 
 We will go into more detail on version control in the Deployment Section, but as an introduction all configuration within Central is labeled based on which stage of the process it is in.
 
@@ -56,7 +47,7 @@ We will go into more detail on version control in the Deployment Section, but as
 2. Draft - version that is currently in design/build phase
 3. Previous Deploy - version that was running in production at some previous point in time
 
-**Central Index**
+#### Central Index
 
 The Central Integration Platform is not just a "data mover" product.  We are a full data management platform that is actively monitoring the health of your data.  One of the key aspects in doing that is a feature we call the Central Index.  Think of the Central Index as a master database that links and cross references all of the key pieces of information that run your business.
 
@@ -65,7 +56,7 @@ How is this helpful?  A great example of that is a pretty typical automation we 
 ### Connectors
 Central supports really any type of data source: Web API's, Databases, SFTP, etc.  There are three main ways that we achieve this connectivity.  The first is we have a library of prebuilt connectors for many popular SaaS products like Salesforce, Microsoft Dynamics, and Oracle Netsuite.  The second is we provide the ability for customers to connect their own proprietary REST API's, SQL Server Databases, and SFTP locations into Central.  The third option is individual developers can use the Central SDK to build their own connectors for private use or to publish for the community.
 
-**Adding a Connector to your environment**
+####  Adding a Connector to your environment
 
 From the Build menu you can select "Connectors" to manage all of the connectors for your particular environment.
 
@@ -103,7 +94,7 @@ If you select "From Library" there is a simple two step process where you pick o
 
 Below are detailed instructions for connecting to each data source in our library.
 
-**Managing an existing connector**
+#### Managing an existing connector
 
 Often time connectors need to be updated for a given situation i.e. API version upgrade, Password expiration, etc.  You can change an existing connector by clicking the "pencil" icon on an existing connector.  You can remove a connector as well by clicking the "trash" icon.  Warning that deleted connectors will impact all integrations where that connector was included.
 
@@ -157,7 +148,7 @@ In the top right of the Data Hub design view is an "Actions" button.  The action
     alt="Actions"
 />
 
-**Add Endpoint**
+#### Add Endpoint
 
 Adding an endpoint is a simple 3 step process.
 1. Select your connector - pick from the existing connectors you have configured
@@ -179,7 +170,7 @@ Adding an endpoint is a simple 3 step process.
 />
 
 
-**Manage Drop Downs**
+#### Manage Drop Downs
 
 A Drop Down is a type of Cross Reference and Master Data Management capability within Central.  Think of a scenario where you are synchronizing something like an Employee from your HRIS to your ERP, and part of that Employee data you want replicated into the ERP is the Job Title.  A Drop Down allows you to store the values of that Job Title across your HRIS and ERP so that when that Employee record gets written to the ERP the correct Job Title Id is selected.
 
@@ -201,7 +192,7 @@ Each Drop Down value is name value pair just like what would show up in a "drop 
 
 Every Drop Down Field is associated inside the Data Hub with a particular Entity Type, which in this case for a Job Title is a "Person".  Also the Field Name of the Drop Down MUST have the same name as the Foreign Key field it is mapped to.  More on field mapping below under Endpoint Configuration.
 
-**View Code**
+#### View Code
 
 It is not actual code.  Think of this as the configured instructions that you want your Data Hub to interpret and execute.  The "View Code" capability allows you to see the raw JSON that the App is maintaining.  View Code can also be used for more advanced platform features that we have not yet included in the UI.
 
@@ -220,15 +211,15 @@ It is not actual code.  Think of this as the configured instructions that you wa
 />
 
 
-**View Current Draft/Live**
+#### View Current Draft/Live
 
 If you have both a current Draft and Live version of the Data Hub this allows you to flip back and forth across both versions.
 
-**Deploy**
+#### Deploy
 
 If you are viewing a Draft version of the Data Hub you can deploy directly from the Build screens.  This will do the same thing as deploying from the actual Deploy screens.
 
-**Delete Data Hub**
+#### Delete Data Hub
 
 If a Data Hub is no longer needed it can be deleted.  If a Data Hub is accidentally deleted it can always be recovered by making a support request.
 
@@ -264,7 +255,7 @@ From the Build menu you can select "Workflows" to manage all of the Workflows fo
 
 In the top right of the Workflow design view is an "Actions" button.  The actions button contains all of the functionality on a Workflow.  The action button for Workflow has some of the same capability as Data Hub - Code View, Deploy, Flip between Versions.
 
-**Add Trigger**
+#### Add Trigger
 
 The user experience for adding a Trigger to your Workflow is the same as adding a Data Hub Endpoint.  Once you click the add Trigger button it will walk your through the 3 step process to....Select a Connector, give the Trigger a Name and Data Source, and then select the type of Trigger.
 
@@ -282,7 +273,7 @@ The user experience for adding a Trigger to your Workflow is the same as adding 
     alt="Add Workflow Trigger"
 />
 
-**Add Steps**
+#### Add Steps
 Once the Trigger has been added you are ready to start adding Steps to your Workflow.  Click the "New Step" button in the top right corner of the designer and give the Step a name.  There is no exact way to organize your Steps.  Think of a "General" Step as a container for your Actions.  You can have a single step with all of the Actions inside of it or you can group your Actions into multiple Steps.
 
 <img
@@ -299,7 +290,7 @@ Once the Trigger has been added you are ready to start adding Steps to your Work
     alt="Add Workflow Step"
 />
 
-**Add Actions**
+#### Add Actions
 Once the step has been added you can rename it, delete it, and manage the actions within it.
 
 <img
@@ -343,11 +334,11 @@ From a configuration stand point there are 4 main features you can configure on 
     alt="API Gateway Features"
 />
 
-**Data Providers**
+#### Data Providers
 
 As mentioned in the Definitions section Data Providers are a way to "query" all of your Data Sources.  Setting up a new Data Provider is the same process as Data Hub Endpoints, with the only exception that the type selected on the final step is "Data Provider".
 
-**Vendor Webhooks**
+#### Vendor Webhooks
 
 Central supports two types of Webhooks - Custom and Vendor.  Custom Webhooks are covered in more detail in the "Developer" section of the documentation.  Vendor Webhooks are implementation specific to the Vendor that is propagating the message.  When setting up a Vendor Webhook there are 4 main inputs.
 
@@ -370,7 +361,7 @@ Central supports two types of Webhooks - Custom and Vendor.  Custom Webhooks are
     alt="Add API Webhook"
 />
 
-**Key Replications**
+#### Key Replications
 
 Key Replication provides the capability to take a unique/primary key from one system and replicate it to another system.  The way in which this works inside of Central is the Key Replication Logic looks at the Index for the existence of a key for both the source and destination.  Once the Index has both then the key is sent down and replicated to the destination.
 
@@ -383,7 +374,7 @@ When setting up a Key Replication there are 4 main inputs.
 
 ....Need updated screen
 
-**Activity Types**
+#### Activity Types
 
 Activity Types are a configuration setting for an app we call the Central Newsfeed.  Activity Types are a way of configuring the types of data that you want included in the Newsfeed.  Examples of different types of activity include New Employees, Sold Opportunities, Birthdays, Work Anniversaries.  Really any type of data Central is processing can be included in our Newsfeed.  If you have interest in configuring the Newsfeed for your environment please talk to your Sales or Customer Service Rep.
 
@@ -406,7 +397,7 @@ Endpoint Configuration is broken down into 6 major areas.
     alt="Endpoint Configuration"
 />
 
-**Data Source**
+#### Data Source
 
 Think of the Data Source configuration as the "tip of the spear" for the Endpoint.  On a Web Services Endpoint this will be the routes that we hit to query and save data.  For a Database Endpoint this would be potentially Stored Procedures or set of SQL Statements to access the data.   
 
@@ -434,11 +425,11 @@ Think of the Data Source configuration as the "tip of the spear" for the Endpoin
 - Response Selector - Use this feature just like the List Response Selector but for single instance.  For the Salesforce example above the value would be records[0].
 
 
-**Filters**
+#### Filters
 
 In addition to the Data Source Filtering you can also add on your Publishers and Subscribers to further restrict any data on the Endpoint that should be processed.
 
-**Scheduler**
+#### Scheduler
 
 A Scheduler is a way to trigger an Endpoint for a given point in time.  There are three different types of Schedulers
 
@@ -467,7 +458,7 @@ On a Day of Month schedule you can also set which we call a Run Condition with 4
 - Week Day Only Skip - if the schedule falls on a weekend it skips that run completely
 - Weekend Only
 
-**Simple Maps**
+#### Simple Maps
 
 How Central implements mapping is one of the most important aspects of understanding the platform.  The first major concept is that Central is built on what we call our common model.  What that means is all of the data that is flowing through Central is associated to a particular type of entity (Person, Company, Sales Order, etc).  Each entity type has aspects that are unique, which are classified as "Properties".  Think of a property as the First Name of a Person or the Order Date of a Sale.  In addition to Properties all Central entities share three common aspects.
 
@@ -582,7 +573,7 @@ There are currently twelve different types of transforms we support.  In some ca
     alt="Endpoint Mapping Transform"
 />
 
-**Nested Maps**
+#### Nested Maps
 
 Nested maps are used in two main scenarios.
 1. If you have a very hierarchical and complex JSON or XML structure that needs to be created
@@ -604,7 +595,7 @@ Nested maps are used in two main scenarios.
 
 Each section of the Nested Map is broken out into Groups.  You can create as many groups as needed and you can nest a Group within another group.  Inside of a Group are the Maps.  That is where the Specific Mappings are set just like the Simple Maps (Primary Key, Foreign Keys, Properties, Custom Data).
 
-**Variables**
+#### Variables
 
 Variables are a way of injecting Global Values into your Endpoint.  The following Connector Endpoints can use Variables today.
 
@@ -671,7 +662,7 @@ The Actions button next to each version is where you go to add comments and rele
 
 ### Monitoring
 
-**Message Logs**
+#### Message Logs
 Think of a "message" as the container or wrapper for the data that is moved throughout the Central Integration Platform.  The payload within the message stores the data that is used by the Endpoint to perform some type of data transaction.  The Message Log capability allows you to search for messages by any combination Entity Type, System, and Primary Key.  In addition to searching and viewing the message, you can also re-run a transaction that may have failed for some reason.
 
 <img

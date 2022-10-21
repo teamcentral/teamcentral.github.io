@@ -32,9 +32,9 @@
 .title-text {
   color:#4A1AAF;
   display:block;
-  width:100%;
+  width:80%;
   float:left;
-  margin-bottom:35px;
+  margin-bottom:30px;
   font-size:$base-font-size * 1.55;
   font-weight: 300;
   line-height: $base-line-height * $base-font-size * 2.25;
@@ -360,10 +360,43 @@ p strong {
   }
 
   h4 {
-    @include relative-font-size(1.25);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.125);
-    }
+    font-variant-caps: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8062bf;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 25px;
+    display: block;
+    margin-bottom:0px;
   }
+}
+.left-column {
+  max-width:200px;
+  min-width:150px;
+  float:left;
+}
+.right-column {
+  max-width:470px;
+  margin:0px 25px;
+  float:left;
+}
+
+#definitions {
+  margin-top:0px;
+  line-height:1em;
+}
+.toc {
+    font-variant-caps: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8062bf;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0px;
+    display: block;
+}
+
+#toc ul {
+  margin-bottom:0px;
 }
