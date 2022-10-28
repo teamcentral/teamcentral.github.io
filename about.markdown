@@ -1,5 +1,5 @@
 ---
-layout: page-toc
+layout: default
 title: About
 permalink: /about/
 ---
