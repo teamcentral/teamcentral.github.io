@@ -463,6 +463,14 @@ p strong {
       @include relative-font-size(1.375);
     }
   }
+  h3:before {
+    content: "";
+    height: 190px;
+    dispLay: block;
+    visibility: hidden;
+    z-index: 0;
+    margin-top: -190px;
+  }
 
   h4 {
     font-variant-caps: normal;
@@ -475,9 +483,16 @@ p strong {
     display: block;
     margin-bottom:0px;
   }
+  h4:before {
+    content: "";
+    height: 190px;
+    dispLay: block;
+    visibility: hidden;
+    z-index: 0;
+    margin-top: -190px;
+  }
+
 }
-
-
 #definitions {
   margin-top:0px;
   line-height:1em;
