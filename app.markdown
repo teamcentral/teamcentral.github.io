@@ -372,7 +372,19 @@ When setting up a Key Replication there are 4 main inputs.
 3. Destination System - the name of the System the Key is going to
 4. Destination Custom Field Name - the name of the field that is storing the replicated Key
 
-....Need updated screen
+<img
+    style="display: block;
+           margin-left: auto;
+           margin-right: auto;
+           width: 50%;
+           margin-top:15px;
+           margin-bottom:15px;
+           border: solid 1px #4A1AAF;
+           box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 50%);
+           transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;"
+    src="/images/add-api-key-replication.png"
+    alt="Add API Key Replication"
+/>
 
 #### Activity Types
 
